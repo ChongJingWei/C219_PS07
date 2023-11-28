@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        #formDataDisplay {
+            display: none; /* Initially hide the form data */
+            font-family: Arial; /* Change font to Arial */
+            border: 2px solid #333; /* Add a border */
+            background-color: #eee; /* Add a background color */
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+        <!-- Two text fields - Name and Email -->
+        <input id="name" type="text" placeholder="Name" value=""><br><br>
+        <input id="email" type="email" placeholder="Email" value=""><br><br>
+        <!-- Two radio buttons for Gender - Male and Female -->
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label><br><br>
+        <!-- Submit button -->
+        <input type="button" value="Submit" onclick="displayForm()">
+    </form>
+
+    <!-- Display form data -->
+    <div id="formDataDisplay"></div>
+
+    <script>
+        function displayForm() {
+            // Get form data
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var gender = $('input[name="gender"]:checked').val() || '';
+
+            // Display form data
+            var displayArea = $('#formDataDisplay');
+            displayArea.html("You entered:<br><br>"+"<div>" + name + "</div>" +
+                            "<div>" + email + "</div>" +
+                            "<div>" + gender + "</div>");
+
+            // Fade in the form data
+            displayArea.fadeIn();
+
+            // Mouseover event to slide up the form data
+            displayArea.on('mouseover', function () {
+                $(this).show();
+            });
+        }
+    </script>
+</body>
+
+</html>
